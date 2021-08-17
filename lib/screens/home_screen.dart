@@ -1,4 +1,5 @@
 import 'package:analog_clock/size_config.dart';
+import 'package:analog_clock/widgets/digital_clock_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -18,7 +19,8 @@ class HomeScreen extends StatelessWidget {
             Text(
               'Tehran, IR | PST',
               style: Theme.of(context).textTheme.bodyText1,
-            )
+            ),
+            DigitalClockWidget(),
           ],
         ),
       ),
