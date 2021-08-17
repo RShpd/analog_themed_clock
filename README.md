@@ -10,5 +10,6 @@ Thanks to [TheFlutterWay](https://theflutterway.com).
 - [google_fonts](https://pub.dev/packages/google_fonts)
 - [provider](https://pub.dev/packages/provider)
 
-### Analog Clock App UI
+### Analog Themed Clock App UI
+![Preview](/clock.gif)
 
