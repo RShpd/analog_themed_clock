@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:analog_clock/size_config.dart';
 import 'package:analog_clock/widgets/analog_clock_widget.dart';
+import 'package:analog_clock/widgets/country_time_widget.dart';
 import 'package:analog_clock/widgets/digital_clock_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -37,13 +38,38 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
               'Tehran, IR | PST',
               style: Theme.of(context).textTheme.bodyText1,
             ),
             DigitalClockWidget(timeOfDay: _timeOfDay),
+            SizedBox(height: 10),
             AnalogClockWidget(time: _dateTime),
+            SizedBox(height: 10),
+            Flexible(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                physics: BouncingScrollPhysics(),
+                child: Row(
+                  children: [
+                    CountryTimeTileWidget(
+                      imagePath: 'assets/icons/Liberty.svg',
+                      timeZone: '-7:30 HRS | EST',
+                      time: '09:32',
+                      name: 'New York, USA',
+                    ),
+                    CountryTimeTileWidget(
+                      imagePath: 'assets/icons/Sydney.svg',
+                      timeZone: '+10 HRS | AEST',
+                      time: '23:50',
+                      name: 'Sydney NSW, Australia',
+                    ),
+                  ],
+                ),
+              ),
+            )
           ],
         ),
       ),
