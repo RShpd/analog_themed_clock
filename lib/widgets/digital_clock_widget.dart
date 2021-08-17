@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 class DigitalClockWidget extends StatelessWidget {
   final TimeOfDay timeOfDay;
 
-  const DigitalClockWidget({Key key, this.timeOfDay}) : super(key: key);
+  const DigitalClockWidget({Key key, @required this.timeOfDay}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
