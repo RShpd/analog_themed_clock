@@ -1,9 +1,31 @@
+import 'dart:async';
+
 import 'package:analog_clock/size_config.dart';
+import 'package:analog_clock/widgets/analog_clock_widget.dart';
 import 'package:analog_clock/widgets/digital_clock_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  TimeOfDay _timeOfDay = TimeOfDay.now();
+  DateTime _dateTime = DateTime.now();
+
+  @override
+  void initState() {
+    super.initState();
+    Timer.periodic(Duration(seconds: 1), (timer) {
+      if (TimeOfDay.now().minute != _timeOfDay.minute) {
+        setState(() => _timeOfDay = TimeOfDay.now());
+      }
+      setState(() => _dateTime = DateTime.now());
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -20,7 +42,8 @@ class HomeScreen extends StatelessWidget {
               'Tehran, IR | PST',
               style: Theme.of(context).textTheme.bodyText1,
             ),
-            DigitalClockWidget(),
+            DigitalClockWidget(timeOfDay: _timeOfDay),
+            AnalogClockWidget(time: _dateTime),
           ],
         ),
       ),
